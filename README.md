@@ -1,5 +1,5 @@
 # IoT22_Tech_Competition
 ----------------------------------------------------
 ##### 2022-07-06 
-###### Rb_sever idpasswd.txt Qt_client ID: admin 추가
+###### idpasswd.txt Qt_client's ID : admin 추가
 ----------------------------------------------------
