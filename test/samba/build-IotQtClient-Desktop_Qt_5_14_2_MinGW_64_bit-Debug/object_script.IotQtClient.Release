@@ -1,0 +1,14 @@
+release/main.o
+release/mainwidget.o
+release/socketclient.o
+release/tab2socketclinet.o
+release/tab3controlpannel.o
+release/keyled.o
+release/tab1devcontrol.o
+release/qrc_IotQtClient.o
+release/moc_mainwidget.o
+release/moc_socketclient.o
+release/moc_tab2socketclinet.o
+release/moc_tab3controlpannel.o
+release/moc_keyled.o
+release/moc_tab1devcontrol.o

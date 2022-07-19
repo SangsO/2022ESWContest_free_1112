@@ -26,6 +26,7 @@ public:
     QWidget *pTab3;
     QWidget *pTab1;
     QWidget *pTab2;
+    QWidget *pTab4;
 
     void setupUi(QWidget *MainWidget)
     {
@@ -44,10 +45,13 @@ public:
         pTab2 = new QWidget();
         pTab2->setObjectName(QStringLiteral("pTab2"));
         tabWidget->addTab(pTab2, QString());
+        pTab4 = new QWidget();
+        pTab4->setObjectName(QStringLiteral("pTab4"));
+        tabWidget->addTab(pTab4, QString());
 
         retranslateUi(MainWidget);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWidget);
@@ -59,6 +63,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(pTab3), QApplication::translate("MainWidget", "Tab 3", 0));
         tabWidget->setTabText(tabWidget->indexOf(pTab1), QApplication::translate("MainWidget", "Tab 1", 0));
         tabWidget->setTabText(tabWidget->indexOf(pTab2), QApplication::translate("MainWidget", "Tab 2", 0));
+        tabWidget->setTabText(tabWidget->indexOf(pTab4), QApplication::translate("MainWidget", "Tab 4", 0));
     } // retranslateUi
 
 };

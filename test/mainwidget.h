@@ -5,6 +5,7 @@
 #include <tab1socketclient.h>
 #include <tab2database.h>
 #include <qfilesocket.h>
+#include <tab4onoff.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWidget; }
@@ -23,5 +24,6 @@ private:
     Tab1SocketClient *pTab1SocketClient;
     Tab2DataBase *ptab2database;
     QfileSocket *pqfilesocket;
+    Tab4OnOff *pTab4OnOff;
 };
 #endif // MAINWIDGET_H

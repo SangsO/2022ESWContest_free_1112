@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/IotQtClient">
+        <file>img/light_off.png</file>
+        <file>img/light_on.png</file>
+    </qresource>
+</RCC>

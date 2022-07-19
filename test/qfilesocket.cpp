@@ -17,7 +17,7 @@ QfileSocket::~QfileSocket()
 void QfileSocket :: slotQfileRecvData(QString strRecvData)
 {
 
-    QFile file("C:/Users/skdis/source/test/test/serverLog.txt");
+    QFile file("/home/udooer/project/test/serverLog.txt");
     if(!file.open(QFile::WriteOnly | QFile::Append| QFile::Text))
     {
         QMessageBox::warning(this, "title","file not open");
@@ -41,7 +41,7 @@ void QfileSocket :: slotQfileRecvData(QString strRecvData)
 void QfileSocket :: slotReadLog()
 {
 
-    QFile file("C:/Users/skdis/source/test/test/serverLog.txt");
+    QFile file("/home/udooer/project/test/serverLog.txt");
     if(!file.open(QFile::ReadOnly))
     {
         QMessageBox::warning(this, "title","file not open");

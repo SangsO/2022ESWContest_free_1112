@@ -38,7 +38,7 @@ public:
     {
         if (QfileSocket->objectName().isEmpty())
             QfileSocket->setObjectName(QStringLiteral("QfileSocket"));
-        QfileSocket->resize(790, 440);
+        QfileSocket->resize(790, 410);
         widget = new QWidget(QfileSocket);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(0, 0, 790, 440));

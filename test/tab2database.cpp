@@ -7,7 +7,7 @@ Tab2DataBase::Tab2DataBase(QWidget *parent) :
 {
     ui->setupUi(this);
     sqlDb = QSqlDatabase::addDatabase("QSQLITE");
-    sqlDb.setDatabaseName("InOut_db");
+    sqlDb.setDatabaseName("InOut.db");
     if(sqlDb.open()) //true이면 db파일 오픈
     {
         qDebug() << "success DB connection";
@@ -15,7 +15,7 @@ Tab2DataBase::Tab2DataBase(QWidget *parent) :
     else
         qDebug() << "fail DB connection";
 
-    QString query = "CREATE TABLE InOut_db (id integer primary key,date DATETIME, status VARCHAR(10))";
+    QString query = "CREATE TABLE InOut_db (id integer primary key,date DATETIME, area VARCHAR(10), status VARCHAR(10))";
     QSqlQuery qry;
     if(!qry.exec(query))
     {
@@ -46,11 +46,13 @@ void Tab2DataBase:: slotTab2RecvData(QString strRecvData)
     strRecvData.replace("[","@");
     strRecvData.replace("]","@");
     QStringList qlist = strRecvData.split("@");
+    QString area = qlist[1];
     QString status = qlist[2];
-    //qDebug() << qlist[2];
+    qDebug() << qlist[1];
+    qDebug() << qlist[2];
 
 
-    QString queryData = "insert into InOut_db(date,status) values('"+dateTime.toString("yy/MM/dd hh:mm:ss") +"','" + status +"')";
+    QString queryData = "insert into InOut_db(date,area,status) values('"+dateTime.toString("yy/MM/dd hh:mm:ss") +"','" +area+ "','"+ status +"')";
     QSqlQuery qryData;
     if(qryData.exec(queryData))
     {
@@ -81,13 +83,16 @@ void Tab2DataBase:: slotSearchDb()
             ui->pTableWidget->setRowCount(rowCount);
             QTableWidgetItem * id = new QTableWidgetItem();
             QTableWidgetItem * date = new QTableWidgetItem();
+            QTableWidgetItem * area = new QTableWidgetItem();
             QTableWidgetItem * status = new QTableWidgetItem();
             id->setText(qrySearch.value("id").toString());
             date->setText(qrySearch.value("date").toString());
+            area->setText(qrySearch.value("area").toString());
             status->setText(qrySearch.value("status").toString());
             ui->pTableWidget->setItem(rowCount-1, 0, id);
             ui->pTableWidget->setItem(rowCount-1, 1, date);
-            ui->pTableWidget->setItem(rowCount-1, 2, status);
+            ui->pTableWidget->setItem(rowCount-1, 2, area);
+            ui->pTableWidget->setItem(rowCount-1, 3, status);
 
         }
     }

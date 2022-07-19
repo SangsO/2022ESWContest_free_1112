@@ -50,22 +50,28 @@ SOURCES       = main.cpp \
 		qfilesocket.cpp \
 		socketclient.cpp \
 		tab1socketclient.cpp \
-		tab2database.cpp moc_mainwidget.cpp \
+		tab2database.cpp \
+		tab4onoff.cpp qrc_IotQtClient.cpp \
+		moc_mainwidget.cpp \
 		moc_qfilesocket.cpp \
 		moc_socketclient.cpp \
 		moc_tab1socketclient.cpp \
-		moc_tab2database.cpp
+		moc_tab2database.cpp \
+		moc_tab4onoff.cpp
 OBJECTS       = main.o \
 		mainwidget.o \
 		qfilesocket.o \
 		socketclient.o \
 		tab1socketclient.o \
 		tab2database.o \
+		tab4onoff.o \
+		qrc_IotQtClient.o \
 		moc_mainwidget.o \
 		moc_qfilesocket.o \
 		moc_socketclient.o \
 		moc_tab1socketclient.o \
-		moc_tab2database.o
+		moc_tab2database.o \
+		moc_tab4onoff.o
 DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/common/unix.conf \
@@ -127,6 +133,7 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/lex.prf \
 		test.pro \
+		IotQtClient.qrc \
 		test.pro
 QMAKE_TARGET  = test
 DESTDIR       = #avoid trailing-slash linebreak
@@ -157,7 +164,7 @@ first: all
 
 all: Makefile $(TARGET)
 
-$(TARGET): ui_mainwidget.h ui_qfilesocket.h ui_tab1socketclient.h ui_tab2database.h $(OBJECTS)  
+$(TARGET): ui_mainwidget.h ui_qfilesocket.h ui_tab1socketclient.h ui_tab2database.h ui_tab4onoff.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
@@ -221,6 +228,7 @@ Makefile: test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmake.conf
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/lex.prf \
 		test.pro \
+		IotQtClient.qrc \
 		/usr/lib/arm-linux-gnueabihf/libQt5Widgets.prl \
 		/usr/lib/arm-linux-gnueabihf/libQt5Gui.prl \
 		/usr/lib/arm-linux-gnueabihf/libQt5Core.prl \
@@ -288,6 +296,7 @@ Makefile: test.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmake.conf
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/yacc.prf:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/lex.prf:
 test.pro:
+IotQtClient.qrc:
 /usr/lib/arm-linux-gnueabihf/libQt5Widgets.prl:
 /usr/lib/arm-linux-gnueabihf/libQt5Gui.prl:
 /usr/lib/arm-linux-gnueabihf/libQt5Core.prl:
@@ -300,7 +309,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/test1.0.0 || mkdir -p .tmp/test1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/test1.0.0/ && $(COPY_FILE) --parents mainwidget.h qfilesocket.h socketclient.h tab1socketclient.h tab2database.h .tmp/test1.0.0/ && $(COPY_FILE) --parents main.cpp mainwidget.cpp qfilesocket.cpp socketclient.cpp tab1socketclient.cpp tab2database.cpp .tmp/test1.0.0/ && $(COPY_FILE) --parents mainwidget.ui qfilesocket.ui tab1socketclient.ui tab2database.ui .tmp/test1.0.0/ && (cd `dirname .tmp/test1.0.0` && $(TAR) test1.0.0.tar test1.0.0 && $(COMPRESS) test1.0.0.tar) && $(MOVE) `dirname .tmp/test1.0.0`/test1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/test1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/test1.0.0/ && $(COPY_FILE) --parents IotQtClient.qrc .tmp/test1.0.0/ && $(COPY_FILE) --parents mainwidget.h qfilesocket.h socketclient.h tab1socketclient.h tab2database.h tab4onoff.h .tmp/test1.0.0/ && $(COPY_FILE) --parents main.cpp mainwidget.cpp qfilesocket.cpp socketclient.cpp tab1socketclient.cpp tab2database.cpp tab4onoff.cpp .tmp/test1.0.0/ && $(COPY_FILE) --parents mainwidget.ui qfilesocket.ui tab1socketclient.ui tab2database.ui tab4onoff.ui .tmp/test1.0.0/ && (cd `dirname .tmp/test1.0.0` && $(TAR) test1.0.0.tar test1.0.0 && $(COMPRESS) test1.0.0.tar) && $(MOVE) `dirname .tmp/test1.0.0`/test1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/test1.0.0
 
 
 clean:compiler_clean 
@@ -321,11 +330,17 @@ mocables: compiler_moc_header_make_all compiler_moc_source_make_all
 
 check: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_IotQtClient.cpp
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwidget.cpp moc_qfilesocket.cpp moc_socketclient.cpp moc_tab1socketclient.cpp moc_tab2database.cpp
+	-$(DEL_FILE) qrc_IotQtClient.cpp
+qrc_IotQtClient.cpp: IotQtClient.qrc \
+		img/light_on.png \
+		img/light_off.png
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/rcc -name IotQtClient IotQtClient.qrc -o qrc_IotQtClient.cpp
+
+compiler_moc_header_make_all: moc_mainwidget.cpp moc_qfilesocket.cpp moc_socketclient.cpp moc_tab1socketclient.cpp moc_tab2database.cpp moc_tab4onoff.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwidget.cpp moc_qfilesocket.cpp moc_socketclient.cpp moc_tab1socketclient.cpp moc_tab2database.cpp
+	-$(DEL_FILE) moc_mainwidget.cpp moc_qfilesocket.cpp moc_socketclient.cpp moc_tab1socketclient.cpp moc_tab2database.cpp moc_tab4onoff.cpp
 moc_mainwidget.cpp: /usr/include/qt5/QtWidgets/QWidget \
 		/usr/include/qt5/QtWidgets/qwidget.h \
 		/usr/include/qt5/QtGui/qwindowdefs.h \
@@ -539,6 +554,8 @@ moc_mainwidget.cpp: /usr/include/qt5/QtWidgets/QWidget \
 		/usr/include/qt5/QtCore/QFile \
 		/usr/include/qt5/QtCore/QTextStream \
 		/usr/include/qt5/QtCore/QDataStream \
+		tab4onoff.h \
+		/usr/include/qt5/QtWidgets/QDialog \
 		mainwidget.h
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/arm-linux-gnueabihf/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/4.8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/4.8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include mainwidget.h -o moc_mainwidget.cpp
 
@@ -1336,11 +1353,214 @@ moc_tab2database.cpp: /usr/include/qt5/QtWidgets/QWidget \
 		tab2database.h
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/arm-linux-gnueabihf/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/4.8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/4.8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include tab2database.h -o moc_tab2database.cpp
 
+moc_tab4onoff.cpp: /usr/include/qt5/QtWidgets/QWidget \
+		/usr/include/qt5/QtWidgets/qwidget.h \
+		/usr/include/qt5/QtGui/qwindowdefs.h \
+		/usr/include/qt5/QtCore/qglobal.h \
+		/usr/include/qt5/QtCore/qconfig.h \
+		/usr/include/qt5/QtCore/qfeatures.h \
+		/usr/include/qt5/QtCore/qsystemdetection.h \
+		/usr/include/qt5/QtCore/qprocessordetection.h \
+		/usr/include/qt5/QtCore/qcompilerdetection.h \
+		/usr/include/qt5/QtCore/qglobalstatic.h \
+		/usr/include/qt5/QtCore/qatomic.h \
+		/usr/include/qt5/QtCore/qbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		/usr/include/qt5/QtCore/qgenericatomic.h \
+		/usr/include/qt5/QtCore/qatomic_msvc.h \
+		/usr/include/qt5/QtCore/qatomic_integrity.h \
+		/usr/include/qt5/QtCore/qoldbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_vxworks.h \
+		/usr/include/qt5/QtCore/qatomic_power.h \
+		/usr/include/qt5/QtCore/qatomic_alpha.h \
+		/usr/include/qt5/QtCore/qatomic_armv7.h \
+		/usr/include/qt5/QtCore/qatomic_armv6.h \
+		/usr/include/qt5/QtCore/qatomic_armv5.h \
+		/usr/include/qt5/QtCore/qatomic_bfin.h \
+		/usr/include/qt5/QtCore/qatomic_ia64.h \
+		/usr/include/qt5/QtCore/qatomic_mips.h \
+		/usr/include/qt5/QtCore/qatomic_s390.h \
+		/usr/include/qt5/QtCore/qatomic_sh4a.h \
+		/usr/include/qt5/QtCore/qatomic_sparc.h \
+		/usr/include/qt5/QtCore/qatomic_gcc.h \
+		/usr/include/qt5/QtCore/qatomic_x86.h \
+		/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		/usr/include/qt5/QtCore/qatomic_unix.h \
+		/usr/include/qt5/QtCore/qmutex.h \
+		/usr/include/qt5/QtCore/qlogging.h \
+		/usr/include/qt5/QtCore/qflags.h \
+		/usr/include/qt5/QtCore/qtypeinfo.h \
+		/usr/include/qt5/QtCore/qtypetraits.h \
+		/usr/include/qt5/QtCore/qsysinfo.h \
+		/usr/include/qt5/QtCore/qobjectdefs.h \
+		/usr/include/qt5/QtCore/qnamespace.h \
+		/usr/include/qt5/QtCore/qobjectdefs_impl.h \
+		/usr/include/qt5/QtGui/qwindowdefs_win.h \
+		/usr/include/qt5/QtCore/qobject.h \
+		/usr/include/qt5/QtCore/qstring.h \
+		/usr/include/qt5/QtCore/qchar.h \
+		/usr/include/qt5/QtCore/qbytearray.h \
+		/usr/include/qt5/QtCore/qrefcount.h \
+		/usr/include/qt5/QtCore/qarraydata.h \
+		/usr/include/string.h \
+		/usr/include/features.h \
+		/usr/include/stdc-predef.h \
+		/usr/include/arm-linux-gnueabihf/sys/cdefs.h \
+		/usr/include/arm-linux-gnueabihf/bits/wordsize.h \
+		/usr/include/arm-linux-gnueabihf/gnu/stubs.h \
+		/usr/include/arm-linux-gnueabihf/gnu/stubs-hard.h \
+		/usr/include/xlocale.h \
+		/usr/include/arm-linux-gnueabihf/bits/string.h \
+		/usr/include/arm-linux-gnueabihf/bits/string2.h \
+		/usr/include/endian.h \
+		/usr/include/arm-linux-gnueabihf/bits/endian.h \
+		/usr/include/arm-linux-gnueabihf/bits/byteswap.h \
+		/usr/include/arm-linux-gnueabihf/bits/types.h \
+		/usr/include/arm-linux-gnueabihf/bits/typesizes.h \
+		/usr/include/arm-linux-gnueabihf/bits/byteswap-16.h \
+		/usr/include/stdlib.h \
+		/usr/include/arm-linux-gnueabihf/bits/waitflags.h \
+		/usr/include/arm-linux-gnueabihf/bits/waitstatus.h \
+		/usr/include/arm-linux-gnueabihf/sys/types.h \
+		/usr/include/time.h \
+		/usr/include/arm-linux-gnueabihf/bits/time.h \
+		/usr/include/arm-linux-gnueabihf/bits/timex.h \
+		/usr/include/arm-linux-gnueabihf/sys/select.h \
+		/usr/include/arm-linux-gnueabihf/bits/select.h \
+		/usr/include/arm-linux-gnueabihf/bits/sigset.h \
+		/usr/include/arm-linux-gnueabihf/bits/select2.h \
+		/usr/include/arm-linux-gnueabihf/sys/sysmacros.h \
+		/usr/include/arm-linux-gnueabihf/bits/pthreadtypes.h \
+		/usr/include/alloca.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdlib-bsearch.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdlib-float.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdlib.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdlib-ldbl.h \
+		/usr/include/arm-linux-gnueabihf/bits/string3.h \
+		/usr/include/qt5/QtCore/qstringbuilder.h \
+		/usr/include/qt5/QtCore/qlist.h \
+		/usr/include/qt5/QtCore/qalgorithms.h \
+		/usr/include/qt5/QtCore/qiterator.h \
+		/usr/include/limits.h \
+		/usr/include/arm-linux-gnueabihf/bits/posix1_lim.h \
+		/usr/include/arm-linux-gnueabihf/bits/local_lim.h \
+		/usr/include/linux/limits.h \
+		/usr/include/arm-linux-gnueabihf/bits/posix2_lim.h \
+		/usr/include/arm-linux-gnueabihf/bits/xopen_lim.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio_lim.h \
+		/usr/include/qt5/QtCore/qcoreevent.h \
+		/usr/include/qt5/QtCore/qscopedpointer.h \
+		/usr/include/qt5/QtCore/qmetatype.h \
+		/usr/include/qt5/QtCore/qvarlengtharray.h \
+		/usr/include/qt5/QtCore/qcontainerfwd.h \
+		/usr/include/qt5/QtCore/qisenum.h \
+		/usr/include/qt5/QtCore/qobject_impl.h \
+		/usr/include/qt5/QtCore/qmargins.h \
+		/usr/include/qt5/QtCore/qrect.h \
+		/usr/include/qt5/QtCore/qsize.h \
+		/usr/include/qt5/QtCore/qpoint.h \
+		/usr/include/qt5/QtGui/qpaintdevice.h \
+		/usr/include/qt5/QtGui/qpalette.h \
+		/usr/include/qt5/QtGui/qcolor.h \
+		/usr/include/qt5/QtGui/qrgb.h \
+		/usr/include/qt5/QtCore/qstringlist.h \
+		/usr/include/qt5/QtCore/qdatastream.h \
+		/usr/include/qt5/QtCore/qiodevice.h \
+		/usr/include/qt5/QtCore/qpair.h \
+		/usr/include/qt5/QtCore/qregexp.h \
+		/usr/include/qt5/QtCore/qstringmatcher.h \
+		/usr/include/qt5/QtGui/qbrush.h \
+		/usr/include/qt5/QtCore/qvector.h \
+		/usr/include/qt5/QtGui/qmatrix.h \
+		/usr/include/qt5/QtGui/qpolygon.h \
+		/usr/include/qt5/QtGui/qregion.h \
+		/usr/include/qt5/QtCore/qline.h \
+		/usr/include/qt5/QtGui/qtransform.h \
+		/usr/include/qt5/QtGui/qpainterpath.h \
+		/usr/include/qt5/QtGui/qimage.h \
+		/usr/include/qt5/QtGui/qpixmap.h \
+		/usr/include/qt5/QtCore/qsharedpointer.h \
+		/usr/include/qt5/QtCore/qshareddata.h \
+		/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		/usr/include/qt5/QtCore/qhash.h \
+		/usr/include/qt5/QtGui/qfont.h \
+		/usr/include/qt5/QtGui/qfontmetrics.h \
+		/usr/include/qt5/QtGui/qfontinfo.h \
+		/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		/usr/include/qt5/QtGui/qcursor.h \
+		/usr/include/qt5/QtGui/qkeysequence.h \
+		/usr/include/qt5/QtGui/qevent.h \
+		/usr/include/qt5/QtCore/qvariant.h \
+		/usr/include/qt5/QtCore/qmap.h \
+		/usr/include/qt5/QtCore/qdebug.h \
+		/usr/include/qt5/QtCore/qtextstream.h \
+		/usr/include/qt5/QtCore/qlocale.h \
+		/usr/include/stdio.h \
+		/usr/include/libio.h \
+		/usr/include/_G_config.h \
+		/usr/include/wchar.h \
+		/usr/include/arm-linux-gnueabihf/bits/wchar.h \
+		/usr/include/wctype.h \
+		/usr/include/arm-linux-gnueabihf/bits/wchar2.h \
+		/usr/include/arm-linux-gnueabihf/bits/wchar-ldbl.h \
+		/usr/include/gconv.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio-lock.h \
+		/usr/include/arm-linux-gnueabihf/bits/libc-lock.h \
+		/usr/include/pthread.h \
+		/usr/include/sched.h \
+		/usr/include/arm-linux-gnueabihf/bits/sched.h \
+		/usr/include/arm-linux-gnueabihf/bits/setjmp.h \
+		/usr/include/errno.h \
+		/usr/include/arm-linux-gnueabihf/bits/errno.h \
+		/usr/include/linux/errno.h \
+		/usr/include/asm/errno.h \
+		/usr/include/asm-generic/errno.h \
+		/usr/include/asm-generic/errno-base.h \
+		/usr/include/arm-linux-gnueabihf/gnu/option-groups.h \
+		/usr/include/arm-linux-gnueabihf/bits/libio-ldbl.h \
+		/usr/include/arm-linux-gnueabihf/bits/sys_errlist.h \
+		/usr/include/getopt.h \
+		/usr/include/ctype.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio2.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio-ldbl.h \
+		/usr/include/qt5/QtCore/qset.h \
+		/usr/include/qt5/QtCore/qcontiguouscache.h \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/qfile.h \
+		/usr/include/qt5/QtCore/qfiledevice.h \
+		/usr/include/qt5/QtGui/qvector2d.h \
+		/usr/include/qt5/QtGui/qtouchdevice.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QTime \
+		/usr/include/qt5/QtCore/qdatetime.h \
+		/usr/include/qt5/QtWidgets/QMessageBox \
+		/usr/include/qt5/QtWidgets/qmessagebox.h \
+		/usr/include/qt5/QtWidgets/qdialog.h \
+		/usr/include/qt5/QtWidgets/QDialog \
+		socketclient.h \
+		/usr/include/qt5/QtNetwork/QTcpSocket \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtNetwork/QHostAddress \
+		/usr/include/qt5/QtNetwork/qhostaddress.h \
+		/usr/include/qt5/QtWidgets/QInputDialog \
+		/usr/include/qt5/QtWidgets/qinputdialog.h \
+		/usr/include/qt5/QtWidgets/qlineedit.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtGui/qtextcursor.h \
+		/usr/include/qt5/QtGui/qtextformat.h \
+		/usr/include/qt5/QtGui/qpen.h \
+		/usr/include/qt5/QtGui/qtextoption.h \
+		tab4onoff.h
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/arm-linux-gnueabihf/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/4.8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/4.8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include tab4onoff.h -o moc_tab4onoff.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwidget.h ui_qfilesocket.h ui_tab1socketclient.h ui_tab2database.h
+compiler_uic_make_all: ui_mainwidget.h ui_qfilesocket.h ui_tab1socketclient.h ui_tab2database.h ui_tab4onoff.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwidget.h ui_qfilesocket.h ui_tab1socketclient.h ui_tab2database.h
+	-$(DEL_FILE) ui_mainwidget.h ui_qfilesocket.h ui_tab1socketclient.h ui_tab2database.h ui_tab4onoff.h
 ui_mainwidget.h: mainwidget.ui
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic mainwidget.ui -o ui_mainwidget.h
 
@@ -1353,13 +1573,16 @@ ui_tab1socketclient.h: tab1socketclient.ui
 ui_tab2database.h: tab2database.ui
 	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic tab2database.ui -o ui_tab2database.h
 
+ui_tab4onoff.h: tab4onoff.ui
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/uic tab4onoff.ui -o ui_tab4onoff.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1577,6 +1800,8 @@ main.o: main.cpp mainwidget.h \
 		/usr/include/qt5/QtCore/QFile \
 		/usr/include/qt5/QtCore/QTextStream \
 		/usr/include/qt5/QtCore/QDataStream \
+		tab4onoff.h \
+		/usr/include/qt5/QtWidgets/QDialog \
 		/usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtWidgets/qapplication.h \
 		/usr/include/qt5/QtCore/qcoreapplication.h \
@@ -1800,6 +2025,8 @@ mainwidget.o: mainwidget.cpp mainwidget.h \
 		/usr/include/qt5/QtCore/QFile \
 		/usr/include/qt5/QtCore/QTextStream \
 		/usr/include/qt5/QtCore/QDataStream \
+		tab4onoff.h \
+		/usr/include/qt5/QtWidgets/QDialog \
 		ui_mainwidget.h \
 		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtWidgets/QAction \
@@ -2768,6 +2995,249 @@ tab2database.o: tab2database.cpp tab2database.h \
 		/usr/include/qt5/QtWidgets/qtableview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tab2database.o tab2database.cpp
 
+tab4onoff.o: tab4onoff.cpp tab4onoff.h \
+		/usr/include/qt5/QtWidgets/QWidget \
+		/usr/include/qt5/QtWidgets/qwidget.h \
+		/usr/include/qt5/QtGui/qwindowdefs.h \
+		/usr/include/qt5/QtCore/qglobal.h \
+		/usr/include/qt5/QtCore/qconfig.h \
+		/usr/include/qt5/QtCore/qfeatures.h \
+		/usr/include/qt5/QtCore/qsystemdetection.h \
+		/usr/include/qt5/QtCore/qprocessordetection.h \
+		/usr/include/qt5/QtCore/qcompilerdetection.h \
+		/usr/include/qt5/QtCore/qglobalstatic.h \
+		/usr/include/qt5/QtCore/qatomic.h \
+		/usr/include/qt5/QtCore/qbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		/usr/include/qt5/QtCore/qgenericatomic.h \
+		/usr/include/qt5/QtCore/qatomic_msvc.h \
+		/usr/include/qt5/QtCore/qatomic_integrity.h \
+		/usr/include/qt5/QtCore/qoldbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_vxworks.h \
+		/usr/include/qt5/QtCore/qatomic_power.h \
+		/usr/include/qt5/QtCore/qatomic_alpha.h \
+		/usr/include/qt5/QtCore/qatomic_armv7.h \
+		/usr/include/qt5/QtCore/qatomic_armv6.h \
+		/usr/include/qt5/QtCore/qatomic_armv5.h \
+		/usr/include/qt5/QtCore/qatomic_bfin.h \
+		/usr/include/qt5/QtCore/qatomic_ia64.h \
+		/usr/include/qt5/QtCore/qatomic_mips.h \
+		/usr/include/qt5/QtCore/qatomic_s390.h \
+		/usr/include/qt5/QtCore/qatomic_sh4a.h \
+		/usr/include/qt5/QtCore/qatomic_sparc.h \
+		/usr/include/qt5/QtCore/qatomic_gcc.h \
+		/usr/include/qt5/QtCore/qatomic_x86.h \
+		/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		/usr/include/qt5/QtCore/qatomic_unix.h \
+		/usr/include/qt5/QtCore/qmutex.h \
+		/usr/include/qt5/QtCore/qlogging.h \
+		/usr/include/qt5/QtCore/qflags.h \
+		/usr/include/qt5/QtCore/qtypeinfo.h \
+		/usr/include/qt5/QtCore/qtypetraits.h \
+		/usr/include/qt5/QtCore/qsysinfo.h \
+		/usr/include/qt5/QtCore/qobjectdefs.h \
+		/usr/include/qt5/QtCore/qnamespace.h \
+		/usr/include/qt5/QtCore/qobjectdefs_impl.h \
+		/usr/include/qt5/QtGui/qwindowdefs_win.h \
+		/usr/include/qt5/QtCore/qobject.h \
+		/usr/include/qt5/QtCore/qstring.h \
+		/usr/include/qt5/QtCore/qchar.h \
+		/usr/include/qt5/QtCore/qbytearray.h \
+		/usr/include/qt5/QtCore/qrefcount.h \
+		/usr/include/qt5/QtCore/qarraydata.h \
+		/usr/include/string.h \
+		/usr/include/features.h \
+		/usr/include/stdc-predef.h \
+		/usr/include/arm-linux-gnueabihf/sys/cdefs.h \
+		/usr/include/arm-linux-gnueabihf/bits/wordsize.h \
+		/usr/include/arm-linux-gnueabihf/gnu/stubs.h \
+		/usr/include/arm-linux-gnueabihf/gnu/stubs-hard.h \
+		/usr/include/xlocale.h \
+		/usr/include/arm-linux-gnueabihf/bits/string.h \
+		/usr/include/arm-linux-gnueabihf/bits/string2.h \
+		/usr/include/endian.h \
+		/usr/include/arm-linux-gnueabihf/bits/endian.h \
+		/usr/include/arm-linux-gnueabihf/bits/byteswap.h \
+		/usr/include/arm-linux-gnueabihf/bits/types.h \
+		/usr/include/arm-linux-gnueabihf/bits/typesizes.h \
+		/usr/include/arm-linux-gnueabihf/bits/byteswap-16.h \
+		/usr/include/stdlib.h \
+		/usr/include/arm-linux-gnueabihf/bits/waitflags.h \
+		/usr/include/arm-linux-gnueabihf/bits/waitstatus.h \
+		/usr/include/arm-linux-gnueabihf/sys/types.h \
+		/usr/include/time.h \
+		/usr/include/arm-linux-gnueabihf/bits/time.h \
+		/usr/include/arm-linux-gnueabihf/bits/timex.h \
+		/usr/include/arm-linux-gnueabihf/sys/select.h \
+		/usr/include/arm-linux-gnueabihf/bits/select.h \
+		/usr/include/arm-linux-gnueabihf/bits/sigset.h \
+		/usr/include/arm-linux-gnueabihf/bits/select2.h \
+		/usr/include/arm-linux-gnueabihf/sys/sysmacros.h \
+		/usr/include/arm-linux-gnueabihf/bits/pthreadtypes.h \
+		/usr/include/alloca.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdlib-bsearch.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdlib-float.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdlib.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdlib-ldbl.h \
+		/usr/include/arm-linux-gnueabihf/bits/string3.h \
+		/usr/include/qt5/QtCore/qstringbuilder.h \
+		/usr/include/qt5/QtCore/qlist.h \
+		/usr/include/qt5/QtCore/qalgorithms.h \
+		/usr/include/qt5/QtCore/qiterator.h \
+		/usr/include/limits.h \
+		/usr/include/arm-linux-gnueabihf/bits/posix1_lim.h \
+		/usr/include/arm-linux-gnueabihf/bits/local_lim.h \
+		/usr/include/linux/limits.h \
+		/usr/include/arm-linux-gnueabihf/bits/posix2_lim.h \
+		/usr/include/arm-linux-gnueabihf/bits/xopen_lim.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio_lim.h \
+		/usr/include/qt5/QtCore/qcoreevent.h \
+		/usr/include/qt5/QtCore/qscopedpointer.h \
+		/usr/include/qt5/QtCore/qmetatype.h \
+		/usr/include/qt5/QtCore/qvarlengtharray.h \
+		/usr/include/qt5/QtCore/qcontainerfwd.h \
+		/usr/include/qt5/QtCore/qisenum.h \
+		/usr/include/qt5/QtCore/qobject_impl.h \
+		/usr/include/qt5/QtCore/qmargins.h \
+		/usr/include/qt5/QtCore/qrect.h \
+		/usr/include/qt5/QtCore/qsize.h \
+		/usr/include/qt5/QtCore/qpoint.h \
+		/usr/include/qt5/QtGui/qpaintdevice.h \
+		/usr/include/qt5/QtGui/qpalette.h \
+		/usr/include/qt5/QtGui/qcolor.h \
+		/usr/include/qt5/QtGui/qrgb.h \
+		/usr/include/qt5/QtCore/qstringlist.h \
+		/usr/include/qt5/QtCore/qdatastream.h \
+		/usr/include/qt5/QtCore/qiodevice.h \
+		/usr/include/qt5/QtCore/qpair.h \
+		/usr/include/qt5/QtCore/qregexp.h \
+		/usr/include/qt5/QtCore/qstringmatcher.h \
+		/usr/include/qt5/QtGui/qbrush.h \
+		/usr/include/qt5/QtCore/qvector.h \
+		/usr/include/qt5/QtGui/qmatrix.h \
+		/usr/include/qt5/QtGui/qpolygon.h \
+		/usr/include/qt5/QtGui/qregion.h \
+		/usr/include/qt5/QtCore/qline.h \
+		/usr/include/qt5/QtGui/qtransform.h \
+		/usr/include/qt5/QtGui/qpainterpath.h \
+		/usr/include/qt5/QtGui/qimage.h \
+		/usr/include/qt5/QtGui/qpixmap.h \
+		/usr/include/qt5/QtCore/qsharedpointer.h \
+		/usr/include/qt5/QtCore/qshareddata.h \
+		/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		/usr/include/qt5/QtCore/qhash.h \
+		/usr/include/qt5/QtGui/qfont.h \
+		/usr/include/qt5/QtGui/qfontmetrics.h \
+		/usr/include/qt5/QtGui/qfontinfo.h \
+		/usr/include/qt5/QtWidgets/qsizepolicy.h \
+		/usr/include/qt5/QtGui/qcursor.h \
+		/usr/include/qt5/QtGui/qkeysequence.h \
+		/usr/include/qt5/QtGui/qevent.h \
+		/usr/include/qt5/QtCore/qvariant.h \
+		/usr/include/qt5/QtCore/qmap.h \
+		/usr/include/qt5/QtCore/qdebug.h \
+		/usr/include/qt5/QtCore/qtextstream.h \
+		/usr/include/qt5/QtCore/qlocale.h \
+		/usr/include/stdio.h \
+		/usr/include/libio.h \
+		/usr/include/_G_config.h \
+		/usr/include/wchar.h \
+		/usr/include/arm-linux-gnueabihf/bits/wchar.h \
+		/usr/include/wctype.h \
+		/usr/include/arm-linux-gnueabihf/bits/wchar2.h \
+		/usr/include/arm-linux-gnueabihf/bits/wchar-ldbl.h \
+		/usr/include/gconv.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio-lock.h \
+		/usr/include/arm-linux-gnueabihf/bits/libc-lock.h \
+		/usr/include/pthread.h \
+		/usr/include/sched.h \
+		/usr/include/arm-linux-gnueabihf/bits/sched.h \
+		/usr/include/arm-linux-gnueabihf/bits/setjmp.h \
+		/usr/include/errno.h \
+		/usr/include/arm-linux-gnueabihf/bits/errno.h \
+		/usr/include/linux/errno.h \
+		/usr/include/asm/errno.h \
+		/usr/include/asm-generic/errno.h \
+		/usr/include/asm-generic/errno-base.h \
+		/usr/include/arm-linux-gnueabihf/gnu/option-groups.h \
+		/usr/include/arm-linux-gnueabihf/bits/libio-ldbl.h \
+		/usr/include/arm-linux-gnueabihf/bits/sys_errlist.h \
+		/usr/include/getopt.h \
+		/usr/include/ctype.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio2.h \
+		/usr/include/arm-linux-gnueabihf/bits/stdio-ldbl.h \
+		/usr/include/qt5/QtCore/qset.h \
+		/usr/include/qt5/QtCore/qcontiguouscache.h \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/qfile.h \
+		/usr/include/qt5/QtCore/qfiledevice.h \
+		/usr/include/qt5/QtGui/qvector2d.h \
+		/usr/include/qt5/QtGui/qtouchdevice.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QTime \
+		/usr/include/qt5/QtCore/qdatetime.h \
+		/usr/include/qt5/QtWidgets/QMessageBox \
+		/usr/include/qt5/QtWidgets/qmessagebox.h \
+		/usr/include/qt5/QtWidgets/qdialog.h \
+		/usr/include/qt5/QtWidgets/QDialog \
+		socketclient.h \
+		/usr/include/qt5/QtNetwork/QTcpSocket \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtNetwork/QHostAddress \
+		/usr/include/qt5/QtNetwork/qhostaddress.h \
+		/usr/include/qt5/QtWidgets/QInputDialog \
+		/usr/include/qt5/QtWidgets/qinputdialog.h \
+		/usr/include/qt5/QtWidgets/qlineedit.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtGui/qtextcursor.h \
+		/usr/include/qt5/QtGui/qtextformat.h \
+		/usr/include/qt5/QtGui/qpen.h \
+		/usr/include/qt5/QtGui/qtextoption.h \
+		ui_tab4onoff.h \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtGui/qicon.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtWidgets/QApplication \
+		/usr/include/qt5/QtWidgets/qapplication.h \
+		/usr/include/qt5/QtCore/qcoreapplication.h \
+		/usr/include/qt5/QtCore/qeventloop.h \
+		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		/usr/include/qt5/QtGui/qguiapplication.h \
+		/usr/include/qt5/QtGui/qinputmethod.h \
+		/usr/include/qt5/QtWidgets/QButtonGroup \
+		/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		/usr/include/qt5/QtWidgets/QHeaderView \
+		/usr/include/qt5/QtWidgets/qheaderview.h \
+		/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		/usr/include/qt5/QtWidgets/qstyleoption.h \
+		/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		/usr/include/qt5/QtGui/qvalidator.h \
+		/usr/include/qt5/QtCore/qregularexpression.h \
+		/usr/include/qt5/QtWidgets/qslider.h \
+		/usr/include/qt5/QtWidgets/qabstractslider.h \
+		/usr/include/qt5/QtWidgets/qstyle.h \
+		/usr/include/qt5/QtWidgets/qtabbar.h \
+		/usr/include/qt5/QtWidgets/qtabwidget.h \
+		/usr/include/qt5/QtWidgets/qrubberband.h \
+		/usr/include/qt5/QtWidgets/QProgressBar \
+		/usr/include/qt5/QtWidgets/qprogressbar.h \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tab4onoff.o tab4onoff.cpp
+
+qrc_IotQtClient.o: qrc_IotQtClient.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_IotQtClient.o qrc_IotQtClient.cpp
+
 moc_mainwidget.o: moc_mainwidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwidget.o moc_mainwidget.cpp
 
@@ -2782,6 +3252,9 @@ moc_tab1socketclient.o: moc_tab1socketclient.cpp
 
 moc_tab2database.o: moc_tab2database.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tab2database.o moc_tab2database.cpp
+
+moc_tab4onoff.o: moc_tab4onoff.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tab4onoff.o moc_tab4onoff.cpp
 
 ####### Install
 

@@ -52,7 +52,15 @@ void Tab1SocketClient :: slotSocketRecvUpdate(QString strRecvData)
 
         emit sigQfileRecvData(strRecvData);
     }
-    else if((strRecvData.indexOf("[SPOT1]") != -1))
+    else if((strRecvData.indexOf("@") != -1))
+    {
+        strRecvData.chop(1);
+        emit sigTab4RecvData(strRecvData);
+        ui->pTeRecvData->append(strRecvData);
+        ui->pTeRecvData->moveCursor(QTextCursor::End);
+        //qDebug() << strRecvData;
+    }
+    else if((strRecvData.indexOf("1") != -1)||(strRecvData.indexOf("0") != -1))
     {
         strRecvData.chop(1);
         emit sigTab2RecvData(strRecvData);
@@ -62,5 +70,16 @@ void Tab1SocketClient :: slotSocketRecvUpdate(QString strRecvData)
     }
 
     //strRecvData = strtime + " " + strRecvData;
+
+}
+
+void Tab1SocketClient :: slotSocketSendData(QString strData)
+{
+    if(ui->pPbServerConnect->isChecked())
+    {
+        pSocketClient->slotSocketSendData(strData);
+    }
+    else
+        QMessageBox::information(this,"socket", "서버 연결 확인");
 
 }

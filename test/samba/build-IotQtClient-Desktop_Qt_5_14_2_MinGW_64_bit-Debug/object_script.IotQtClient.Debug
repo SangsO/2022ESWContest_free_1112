@@ -1,0 +1,14 @@
+debug/main.o
+debug/mainwidget.o
+debug/socketclient.o
+debug/tab2socketclinet.o
+debug/tab3controlpannel.o
+debug/keyled.o
+debug/tab1devcontrol.o
+debug/qrc_IotQtClient.o
+debug/moc_mainwidget.o
+debug/moc_socketclient.o
+debug/moc_tab2socketclinet.o
+debug/moc_tab3controlpannel.o
+debug/moc_keyled.o
+debug/moc_tab1devcontrol.o

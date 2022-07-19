@@ -38,10 +38,10 @@ public:
     {
         if (Tab1SocketClient->objectName().isEmpty())
             Tab1SocketClient->setObjectName(QStringLiteral("Tab1SocketClient"));
-        Tab1SocketClient->resize(790, 440);
+        Tab1SocketClient->resize(790, 410);
         horizontalLayoutWidget = new QWidget(Tab1SocketClient);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 10, 771, 33));
+        horizontalLayoutWidget->setGeometry(QRect(10, 10, 771, 34));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(10);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));

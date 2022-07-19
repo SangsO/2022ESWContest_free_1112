@@ -41,7 +41,7 @@ public:
     {
         if (Tab2DataBase->objectName().isEmpty())
             Tab2DataBase->setObjectName(QStringLiteral("Tab2DataBase"));
-        Tab2DataBase->resize(790, 440);
+        Tab2DataBase->resize(790, 410);
         horizontalLayoutWidget = new QWidget(Tab2DataBase);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(10, 10, 771, 51));
@@ -81,22 +81,24 @@ public:
         horizontalLayout->setStretch(4, 1);
         horizontalLayoutWidget_2 = new QWidget(Tab2DataBase);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(10, 70, 771, 311));
+        horizontalLayoutWidget_2->setGeometry(QRect(10, 70, 771, 331));
         horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         pTableWidget = new QTableWidget(horizontalLayoutWidget_2);
-        if (pTableWidget->columnCount() < 3)
-            pTableWidget->setColumnCount(3);
+        if (pTableWidget->columnCount() < 4)
+            pTableWidget->setColumnCount(4);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         pTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         pTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         pTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        pTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         pTableWidget->setObjectName(QStringLiteral("pTableWidget"));
         pTableWidget->setSortingEnabled(true);
-        pTableWidget->setColumnCount(3);
+        pTableWidget->setColumnCount(4);
         pTableWidget->horizontalHeader()->setVisible(true);
         pTableWidget->horizontalHeader()->setDefaultSectionSize(160);
         pTableWidget->horizontalHeader()->setMinimumSectionSize(40);
@@ -120,9 +122,11 @@ public:
         QTableWidgetItem *___qtablewidgetitem = pTableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("Tab2DataBase", "ID", 0));
         QTableWidgetItem *___qtablewidgetitem1 = pTableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("Tab2DataBase", "Date", 0));
+        ___qtablewidgetitem1->setText(QApplication::translate("Tab2DataBase", "data", 0));
         QTableWidgetItem *___qtablewidgetitem2 = pTableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("Tab2DataBase", "status", 0));
+        ___qtablewidgetitem2->setText(QApplication::translate("Tab2DataBase", "area", 0));
+        QTableWidgetItem *___qtablewidgetitem3 = pTableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QApplication::translate("Tab2DataBase", "status", 0));
     } // retranslateUi
 
 };

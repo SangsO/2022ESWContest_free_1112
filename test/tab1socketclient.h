@@ -28,10 +28,12 @@ private:
 private slots:
     void slotConnectToServer(bool);
     void slotSocketRecvUpdate(QString);
+    void slotSocketSendData(QString);
 
 signals:
     void sigTab2RecvData(QString);
     void sigQfileRecvData(QString);
+    void sigTab4RecvData(QString);
 
 };
 
