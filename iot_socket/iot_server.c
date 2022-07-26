@@ -1,5 +1,3 @@
-/* author : KSH */
-/* 서울기술 교육센터 IoT */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -16,7 +14,7 @@
 #include <time.h>
 #include <errno.h>
 
-#define BUF_SIZE 100
+#define BUF_SIZE 1024
 #define MAX_CLNT 32
 #define ID_SIZE 10
 #define ARR_CNT 5
@@ -43,6 +41,7 @@ void send_msg(MSG_INFO * msg_info, CLIENT_INFO * first_client_info);
 void error_handling(char * msg);
 void log_file(char * msgstr);
 
+int log_flag = 0;
 int clnt_cnt=0;
 pthread_mutex_t mutx;
 
@@ -58,7 +57,7 @@ int main(int argc, char *argv[])
 	char idpasswd[(ID_SIZE*2)+3];
 	char *pToken;
 	char *pArray[ARR_CNT]={0};
-	char msg[BUF_SIZE];
+	char msg[BUF_SIZE]; // msg[100]
 
 	/*	CLIENT_INFO client_info[MAX_CLNT] = {{0,-1,"","1","PASSWD"}, \
 		{0,-1,"","2","PASSWD"},  {0,-1,"","3","PASSWD"}, \
@@ -90,8 +89,8 @@ int main(int argc, char *argv[])
 		perror("fopen() ");
 		exit(2);
 	}
-	char id[ID_SIZE];
-	char pw[ID_SIZE];
+	char id[ID_SIZE]; //id[10]
+	char pw[ID_SIZE]; // pw[10]
 	CLIENT_INFO *client_info = (CLIENT_INFO *)calloc(sizeof(CLIENT_INFO),  MAX_CLNT);
 	int ret;
 	do {
@@ -188,11 +187,12 @@ int main(int argc, char *argv[])
 						client_info[i].fd = clnt_sock; 
 						clnt_cnt++;
 						pthread_mutex_unlock(&mutx);
+
+						pthread_create(t_id+i, NULL, clnt_connection, (void *)(client_info + i));
 						sprintf(msg,"[%s] New connected! (ip:%s,fd:%d,sockcnt:%d)\n",pArray[0],inet_ntoa(clnt_adr.sin_addr),clnt_sock,clnt_cnt);
 						log_file(msg);
 						write(clnt_sock, msg,strlen(msg));
 
-						pthread_create(t_id+i, NULL, clnt_connection, (void *)(client_info + i));
 						pthread_detach(t_id[i]);
 						break;
 					}
@@ -208,7 +208,6 @@ int main(int argc, char *argv[])
 		}
 		else 
 			shutdown(clnt_sock,SHUT_WR);
-
 	}
 	return 0;
 }
@@ -218,7 +217,7 @@ void * clnt_connection(void *arg)
 	CLIENT_INFO * client_info = (CLIENT_INFO *)arg;
 	int str_len = 0;
 	int index = client_info->index;
-	char msg[BUF_SIZE];
+	char msg[BUF_SIZE]; // msg[100]
 	char to_msg[MAX_CLNT*ID_SIZE+1];
 	int i=0;
 	char *pToken;
@@ -229,6 +228,10 @@ void * clnt_connection(void *arg)
 	CLIENT_INFO  * first_client_info;
 
 	first_client_info = (CLIENT_INFO *)((void *)client_info - (void *)( sizeof(CLIENT_INFO) * index ));
+
+	
+//	send_msg(&msg_info, first_client_info);
+
 	while(1)
 	{
 		memset(msg,0x0,sizeof(msg));
@@ -254,7 +257,6 @@ void * clnt_connection(void *arg)
 		msg_info.msg = to_msg;
 		msg_info.len = strlen(to_msg);
 
-		sprintf(strBuff,"msg : [%s->%s] %s",msg_info.from,msg_info.to,pArray[1]);
 		log_file(strBuff);
 		send_msg(&msg_info, first_client_info);
 	}
@@ -280,7 +282,10 @@ void send_msg(MSG_INFO * msg_info, CLIENT_INFO * first_client_info)
 	{
 		for(i=0;i<MAX_CLNT;i++)
 			if((first_client_info+i)->fd != -1)	
+			{
 				write((first_client_info+i)->fd, msg_info->msg, msg_info->len);
+				
+			}
 	}
 	else if(!strcmp(msg_info->to,"IDLIST"))
 	{

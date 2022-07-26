@@ -9,6 +9,7 @@
 #include <sys/socket.h>
 #include <pthread.h>
 #include <signal.h>
+#include <fcntl.h>
 
 #define BUF_SIZE 100
 #define NAME_SIZE 20
@@ -49,6 +50,7 @@ int main(int argc, char *argv[])
 
 	sprintf(msg,"[%s:PASSWD]",name);
 	write(sock, msg, strlen(msg));
+
 	pthread_create(&rcv_thread, NULL, recv_msg, (void *)&sock);
 	pthread_create(&snd_thread, NULL, send_msg, (void *)&sock);
 
@@ -113,9 +115,13 @@ void * recv_msg(void * arg)
 	int i;
 	char *pToken;
 	char *pArray[ARR_CNT]={0};
-
 	char name_msg[NAME_SIZE + BUF_SIZE +1];
 	int str_len;
+	int tfd;
+	char tlog_buf[BUF_SIZE];
+	int tlog_len;
+
+	
 	while(1) {
 		memset(name_msg,0x0,sizeof(name_msg));
 		str_len = read(*sock, name_msg, NAME_SIZE + BUF_SIZE );
@@ -140,7 +146,37 @@ void * recv_msg(void * arg)
 		//		printf("id:%s, msg:%s,%s,%s,%s\n",pArray[0],pArray[1],pArray[2],pArray[3],pArray[4]);
 		printf("id:%s, msg:%s\n",pArray[0],pArray[1]);
 		*/
+		tfd = open("serverLog.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
+    if(tfd < 0)
+        error_handling("open() error!");
+    else if (tfd >0)
+    {
+        while((tlog_len = read(*sock,tlog_buf, BUF_SIZE)) >=0)
+        {
+            if(tlog_len ==0)
+                break;
+            write(tfd, tlog_buf, tlog_len);
+        }
+    }
+	close(tfd);
+
+
 	}
+/*
+    tfd = open("serverLog.txt", O_WRONLY | O_CREAT | O_APPEND);
+    if(tfd < 0)
+        error_handling("open() error!");
+    else if (tfd >0)
+    {
+        while((tlog_len = read(*sock,tlog_buf, BUF_SIZE)) >=0)
+        {
+            if(tlog_len ==0)
+                break;
+            write(tfd, tlog_buf, tlog_len);
+        }
+    }
+*/
+//	close(tfd);
 }
 
 void error_handling(char * msg)
