@@ -60,13 +60,13 @@ npm test
 * 0.0.1
     * 작업 진행 중
 
-## 정보
+## Workflow
+![image](https://user-images.githubusercontent.com/102007930/182278380-84cd266d-8548-40d7-a711-c616fcb06909.png)
 
-이름 – – 이메일주소@example.com
+![image](https://user-images.githubusercontent.com/102007930/182278392-ac9d9fc7-4f55-43ca-8ba0-31ceea7cca59.png)
 
-XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할 수 있습니다.
 
-[https://github.com/SangsO](https://github.com/dbader/)
+
 
 ## 기술 스택
 
