@@ -11,10 +11,10 @@
 
 |이름|내용|
 |---|--------|
-|강시형|ROS 통신 구축, OpenCV 기반 번호판 인식 및 충전구탐색 구현, Dynamixel 활용 Manipulator 구현|
-|오규상|OpenCV 기반 충전구탐색 구현, Dynamixel 활용 Manipulator 구현|
-|김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현, Arduino Parking System 구현|
-|김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현, Arduino Parking System 구현|
+|강시형|ROS 통신 구축   Pi Camera OpenCV 기반 번호판 인식   Realsense 활용 충전구탐색 구현   Dynamixel 활용 Manipulator 구현|
+|오규상|OpenCV 기반 충전구탐색 구현   Dynamixel 활용 Manipulator 구현|
+|김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현   Arduino Parking System 구현|
+|김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현   Arduino Parking System 구현|
 
 ## 설치 방법
 
@@ -47,6 +47,8 @@ npm test
 
 ## 업데이트 내역
 
+
+
 * 0.2.1
     * 수정: 문서 업데이트 (모듈코드 동일)
 * 0.2.0
@@ -57,12 +59,10 @@ npm test
 * 0.1.0
     * 첫 출시
     * 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
-* 0.0.1
-    * 작업 진행 중
+* 22.05.16
+    * 아이디어 주제 탐구
 
 ## Workflow
-![image](https://user-images.githubusercontent.com/102007930/182278380-84cd266d-8548-40d7-a711-c616fcb06909.png)
-
 ![image](https://user-images.githubusercontent.com/102007930/182278516-c0bf7e28-d8fc-4a0a-8a03-8cc8fa126d42.png)
 
 ![image](https://user-images.githubusercontent.com/102007930/182278520-a149a9b3-3583-438b-a753-e7fb2beda625.png)
