@@ -11,16 +11,10 @@
 
 |이름|내용|
 |---|--------|
-|강시형|ROS 통신 구축
-Pi Camera OpenCV 기반 번호판 인식
-Realsense 활용 충전구탐색 구현
-Dynamixel 활용 Manipulator 구현|
-|오규상|OpenCV 기반 충전구탐색 구현
-Dynamixel 활용 Manipulator 구현|
-|김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현
-Arduino Parking System 구현|
-|김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현
-Arduino Parking System 구현|
+|강시형|ROS 통신 구축, Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구탐색 구현, Dynamixel 활용 Manipulator 구현|
+|오규상|OpenCV 기반 충전구탐색 구현, Dynamixel 활용 Manipulator 구현|
+|김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현, Arduino Parking System 구현|
+|김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현, Arduino Parking System 구현|
 
 ## 설치 방법
 
@@ -53,18 +47,18 @@ npm test
 
 ## 업데이트 내역
 
-
-
-* 0.2.1
-    * 수정: 문서 업데이트 (모듈코드 동일)
-* 0.2.0
-    * 수정: `setDefaultXYZ()` 메서드 제거
-    * 추가: `init()` 메서드 추가
-* 0.1.1
-    * 버그 수정: `baz()` 메서드 호출 시 부팅되지 않는 현상
-* 0.1.0
-    * 첫 출시
-    * 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
+* 22.06.01
+    * 메인 서버(Raspberry Pi 4 + APM(Apache, php, MariaDB)
+* 22.05.29
+    * 사용자부분 (Qt기반) 개발 시작
+* 22.05.29
+    * 충전기 Manipulator Hardware 조립
+* 22.05.28 ~ 22.06.04
+    * 개발환경 구축 완료
+* 22.05.26
+    * 개별 업무 분담 및 재료구매 신청 완료
+* 22.05.23
+    * 아이디어 선정 및 구체화 완료
 * 22.05.16
     * 아이디어 주제 탐구
 
