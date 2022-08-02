@@ -9,11 +9,22 @@
 
 ![](../header.png)
 
+No	구분	성명	참여인원의 업무 분장
+1	팀장	강시형	ROS기반 통신 체계 구축
+Raspberry pi – OpenCV 기반 차량번호 인식 알고리즘 구현, Database 구축, 
+보고서 작성
+2	팀원	김건우	Arduino 기반 주차타워 
+하드웨어 제작
+3	팀원	김재현	Qt를 이용한 관리자 인터페이스 구축
+Arduino – Qt – Jetson 간 멀티 쓰레드 Socket server 구축
+4	팀원	오규상	Github, Notion 기반 형상관리 및 프로젝트 관리
+다이나믹셀을 이용한 Manipulator 구동
+보고서 작성
+
+
 |이름|내용|
 |---|--------|
-|강시형|ROS 통신 구축    
-Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구탐색 구현   
-Dynamixel 활용 Manipulator 구현|
+|강시형|ROS 통신 구축, Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구탐색 구현, Dynamixel 활용 Manipulator 구현|
 |오규상|OpenCV 기반 충전구탐색 구현.   Dynamixel 활용 Manipulator 구현|
 |김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
 |김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
