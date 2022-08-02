@@ -1,3 +1,4 @@
+
 # Smart IoT Electric Charging Solution
 > 자동으로 충전 및 차량 관리가 가능한 스마트 전기차 충전소 솔루션 프로젝트 입니다.
 
@@ -11,7 +12,7 @@
 
 |이름|내용|
 |---|--------|
-|강시형|ROS 통신 구축, Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구탐색 구현, Dynamixel 활용 Manipulator 구현|
+|강시형|ROS 통신 구축 Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구 탐색 구현, Dynamixel 활용 Manipulator 구현|
 |오규상|OpenCV 기반 충전구탐색 구현.   Dynamixel 활용 Manipulator 구현|
 |김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
 |김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
@@ -90,11 +91,11 @@ npm test
 | <center>분류</center> |<center>기술 스택</center>|
 | :-------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | *Languages*|<img src="https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=C&logoColor=white"/> <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white"/> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/>|
-| *MCU & MPU*|<img src="https://img.shields.io/badge/Raspberry Pi-A22846?style=flat-square&logo=Raspberry Pi&logoColor=white"/> <img src="https://img.shields.io/badge/Jetson Nano-76B900?style=flat-square&logo=NVIDIA&logoColor=white"/>|<img src="https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white">|
+| *MCU & MPU*|<img src="https://img.shields.io/badge/Raspberry Pi-A22846?style=flat-square&logo=Raspberry Pi&logoColor=white"/> <img src="https://img.shields.io/badge/Jetson Nano-76B900?style=flat-square&logo=NVIDIA&logoColor=white"/>|<img src="https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white"> <img src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=Arduino&logoColor=white"/> |
 | *Server / DB*|<img src="https://img.shields.io/badge/Apache-D22128?style=flat-square&logo=Apache&logoColor=white"/> <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=PHP&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/> |
-| *VersionControl*|<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/> |
 | *OS*|<img src="https://img.shields.io/badge/Windows 10-0078D6?style=flat-square&logo=Windows&logoColor=white"/> <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=Ubuntu&logoColor=white"/> |
 | *Platform / Library*|<img src="https://img.shields.io/badge/ROS-22314E?style=flat-square&logo=ROS&logoColor=white"/> <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=OpenCV&logoColor=white"/> |
+| *VersionControl*|<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/> |
 | *ETC*|<img src="https://img.shields.io/badge/Google Docs-4285F4?style=flat-square&logo=Google&logoColor=white"/> <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=Notion&logoColor=white"/>|
 
 <!-- Markdown link & img dfn's -->
