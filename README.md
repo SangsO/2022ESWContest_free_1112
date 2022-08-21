@@ -6,7 +6,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-프로젝트 소개 글 작성 예정...
+프로젝트 소개 글 작성 예정
 
 ![](../header.png)
 
