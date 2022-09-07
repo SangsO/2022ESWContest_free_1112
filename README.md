@@ -9,7 +9,7 @@
 - 충전기, 차량정보, 충전소 상태 등의 데이터를 서버와 동기화 시켜서 관리 및 Qt GUI 기반 확인 
 
 <br>
-![imaeg](https://user-images.githubusercontent.com/102007930/188778292-a7fa6839-7831-47c9-be33-1752881d71fe.png)
+![image](https://user-images.githubusercontent.com/102007930/188778292-a7fa6839-7831-47c9-be33-1752881d71fe.png)
 <br>
 
 ## 팀원 및 업무 분담
