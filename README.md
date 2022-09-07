@@ -12,8 +12,6 @@
 ![image](https://user-images.githubusercontent.com/102007930/188778047-a4fce794-3e79-4936-ae1c-33b65be1b132.png)
 <br>
 
-![](../header.png)
-
 ## 팀원 및 업무 분담
 
 |이름|내용|
