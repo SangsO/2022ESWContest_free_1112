@@ -3,9 +3,9 @@
 > 전기차 충전소 주차장에 대한 종합 솔루션을 제공
 
 
-\\<!--[![NPM Version][npm-image]][npm-url]-->
-\\<!--[![Build Status][travis-image]][travis-url]-->
-\\<!--[![Downloads Stats][npm-downloads]][npm-url]-->
+\<!--[![NPM Version][npm-image]][npm-url]-->
+\<!--[![Build Status][travis-image]][travis-url]-->
+\<!--[![Downloads Stats][npm-downloads]][npm-url]-->
 
 프로젝트 소개 글 작성 예정
 
