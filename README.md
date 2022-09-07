@@ -8,9 +8,7 @@
 - 영상처리를 통한 Manipulator를 차량 충전구에 정확하게 연결
 - 충전기, 차량정보, 충전소 상태 등의 데이터를 서버와 동기화 시켜서 관리 및 Qt GUI 기반 확인 
 
-<br>
 ![image](https://user-images.githubusercontent.com/102007930/188815434-24001e1a-2a1f-458c-b9b4-9659e90d7f5c.png)
-<br>
 
 ## 팀원 및 업무 분담
 
