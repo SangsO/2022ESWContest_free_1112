@@ -1,12 +1,12 @@
 
 # Smart IoT Electric Charging & Parking Solution
 > 전기차 충전소 주차장에 대한 종합 솔루션을 제공
-
-\\<!--[![NPM Version][npm-image]][npm-url]-->
-\\<!--[![Build Status][travis-image]][travis-url]-->
-\\<!--[![Downloads Stats][npm-downloads]][npm-url]-->
-
-프로젝트 소개 글 작성 예정
+- 진입하는 차량을 인식, 번호판 영상처리를 통해 DB 연동을 통하 전기차 / 내연기관차 및 차량 선별
+- 차종에 따른 LCD 안내 및 특정 주차구역으로 안내
+- 차량 주차구역 정차 완료 인식될 시 자동 충전 시작
+- DB연동 기반 Manipulator 제어로 전기차 충전구 탐색 및 자동 충전
+- 영상처리를 통한 Manipulator를 차량 충전구에 정확하게 연결
+- 충전기, 차량정보, 충전소 상태 등의 데이터를 서버와 동기화 시켜서 관리 및 Qt GUI 기반 확인 
 
 ![](../header.png)
 
