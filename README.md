@@ -13,40 +13,13 @@
 ## 팀원 및 업무 분담
 
 |이름|내용|
-|----|--------|
+|-----|--------|
 |강시형|ROS 통신 구축 Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구 탐색 구현, Dynamixel 활용 Manipulator 구현|
 |오규상|OpenCV 기반 충전구탐색 구현.   Dynamixel 활용 Manipulator 구현|
 |김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
 |김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
 
-## 설치 방법
-
-OS X & 리눅스:
-
-```sh
-npm install my-crazy-module --save
-```
-
-윈도우:
-
-```sh
-edit autoexec.bat
-```
-
-## 사용 예제
-
-스크린 샷과 코드 예제를 업로드 예정
-
-_더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
-
-## 개발 환경 설정
-
-개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성
-
-```sh
-make install
-npm test
-```
+</br>
 
 ## 업데이트 내역
 
