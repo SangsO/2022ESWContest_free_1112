@@ -1,53 +1,38 @@
 
-# Smart IoT Electric Charging Solution
-> 자동으로 충전 및 차량 관리가 가능한 스마트 전기차 충전소 솔루션 프로젝트 입니다.
+# Smart IoT Electric Charging & Parking Solution
+> 전기차 충전소 주차장에 대한 종합 솔루션을 제공
+- 진입하는 차량을 인식, 번호판 영상처리를 통해 DB 연동을 통하 전기차 / 내연기관차 및 차량 선별
+- 차종에 따른 LCD 안내 및 특정 주차구역으로 안내
+- 차량 주차구역 정차 완료 인식될 시 자동 충전 시작
+- DB연동 기반 Manipulator 제어로 전기차 충전구 탐색 및 자동 충전
+- 영상처리를 통한 Manipulator를 차량 충전구에 정확하게 연결
+- 충전기, 차량정보, 충전소 상태 등의 데이터를 서버와 동기화 시켜서 관리 및 Qt GUI 기반 확인 
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+<img src = "https://user-images.githubusercontent.com/102007930/188815434-24001e1a-2a1f-458c-b9b4-9659e90d7f5c.png" width="510" height="360"/>
 
-프로젝트 소개 글 작성 예정
-
-![](../header.png)
+## 팀원 및 업무 분담
 
 |이름|내용|
-|---|--------|
-|강시형|ROS 통신 구축 Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구 탐색 구현, Dynamixel 활용 Manipulator 구현|
-|오규상|OpenCV 기반 충전구탐색 구현.   Dynamixel 활용 Manipulator 구현|
-|김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
-|김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
+|-----|--------|
+|강시형|ROS 통신 기반 구축</br> Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구 탐색 구현|
+|오규상|OpenCV 기반 충전구탐색 구현</br> Dynamixel 활용 Manipulator 구현</br> 보고서 작성|
+|김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현</br>   Arduino Parking System 구현|
+|김건우|하드웨어 제작</br>센서, Arduino Parking System 구현|
 
-## 설치 방법
-
-OS X & 리눅스:
-
-```sh
-npm install my-crazy-module --save
-```
-
-윈도우:
-
-```sh
-edit autoexec.bat
-```
-
-## 사용 예제
-
-스크린 샷과 코드 예제를 업로드 예정
-
-_더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
-
-## 개발 환경 설정
-
-개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성
-
-```sh
-make install
-npm test
-```
+</br>
 
 ## 업데이트 내역
 
+* 22.09.15
+    * 최종 결과보고서 작성 완료
+* 22.09.14
+    * 하드웨어 조립
+* 22.09.09
+    * 코드 최적화 및 오류 수정
+* 22.09.05
+    * Manipulator Bracket 3D 설계 및 인쇄
+* 22.08.26
+    * 최종 시연용 하드웨어 제작 시작
 * 22.08.19
     * 최종 결과보고서 작성 시작
 * 22.08.09
