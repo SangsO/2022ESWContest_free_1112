@@ -25,7 +25,7 @@
 
 |이름|내용|
 |-----|--------|
-|Blocking|차량 입차부 차단기 및 인식부 콛|
+|Blocking|차량 입차부 차단기 및 인식부 |
 |Camera|RasbperryPi Camera 번호판 인식 코드|
 |Jetson_Mode_Selector|JetsonNano 구동 모드 Select 코드|
 |Manipulator/Charge_Manipulator|충전구 탐색 영상처리 및 Manipulator Code|
