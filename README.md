@@ -14,10 +14,10 @@
 
 |이름|내용|
 |-----|--------|
-|강시형|ROS 통신 구축 Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구 탐색 구현</br>, Dynamixel 활용 Manipulator 구현|
-|오규상|OpenCV 기반 충전구탐색 구현.   Dynamixel 활용 Manipulator 구현, 보고서 작성|
-|김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
-|김건우|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현.   Arduino Parking System 구현|
+|강시형|ROS 통신 기반 구축</br> Pi Camera OpenCV 기반 번호판 인식 및 Realsense 활용 충전구 탐색 구현|
+|오규상|OpenCV 기반 충전구탐색 구현</br> Dynamixel 활용 Manipulator 구현</br> 보고서 작성|
+|김재현|APM(Apache, php, MariaDB) 및 Socket Server 기반 Qt UI 구현</br>   Arduino Parking System 구현|
+|김건우|하드웨어 제작</br>센서, Arduino Parking System 구현|
 
 </br>
 
