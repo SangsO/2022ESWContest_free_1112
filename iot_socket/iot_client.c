@@ -146,37 +146,7 @@ void * recv_msg(void * arg)
 		//		printf("id:%s, msg:%s,%s,%s,%s\n",pArray[0],pArray[1],pArray[2],pArray[3],pArray[4]);
 		printf("id:%s, msg:%s\n",pArray[0],pArray[1]);
 		*/
-		tfd = open("serverLog.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
-    if(tfd < 0)
-        error_handling("open() error!");
-    else if (tfd >0)
-    {
-        while((tlog_len = read(*sock,tlog_buf, BUF_SIZE)) >=0)
-        {
-            if(tlog_len ==0)
-                break;
-            write(tfd, tlog_buf, tlog_len);
-        }
-    }
-	close(tfd);
-
-
 	}
-/*
-    tfd = open("serverLog.txt", O_WRONLY | O_CREAT | O_APPEND);
-    if(tfd < 0)
-        error_handling("open() error!");
-    else if (tfd >0)
-    {
-        while((tlog_len = read(*sock,tlog_buf, BUF_SIZE)) >=0)
-        {
-            if(tlog_len ==0)
-                break;
-            write(tfd, tlog_buf, tlog_len);
-        }
-    }
-*/
-//	close(tfd);
 }
 
 void error_handling(char * msg)
