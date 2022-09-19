@@ -25,11 +25,15 @@
 
 |이름|내용|
 |-----|--------|
-|Blocking|차량 입차부 차단기 및 인식부 |
-|Camera|RasbperryPi Camera 번호판 인식 코드|
-|Jetson_Mode_Selector|JetsonNano 구동 모드 Select 코드|
-|Manipulator/Charge_Manipulator|충전구 탐색 영상처리 및 Manipulator Code|
-|socket_Ros_bridge|ROS 기반 Socket 통신 구현 코드|
+|Charge_Manipulator|충전기 Manipulator 동작|
+|Blocking_Arduino|입차부 센서 아두이노 코드|
+|Blocking_Raspberry|입차부 라즈베리 및 번호판 영상처리 부분|
+|Bridge_ros_socket_for_Jetson1|ROS 통신 구축 부분|
+|Charge_DepthCamera|충전구 영상처리 코드|
+|Mode_Selector|ROS Topic Subscribe 부분|
+|QtFinal_Udoo|Qt GUI Socket Server 코드|
+
+
 
 </br>
 
